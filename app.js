@@ -1,3 +1,4 @@
+
 const express = require('express');
 const sequelize = require('./config/db');
 const db = require('./models');
@@ -5,14 +6,12 @@ const userRoutes = require('./routes/user.route');
 const productRoutes = require('./routes/product.route');
 const transactionRoutes = require('./routes/transaction.route');
 
+const app = express();
+app.use(express.json());
+
 app.use('/api/users', userRoutes);
 app.use('/api/products', productRoutes);
 app.use('/api/transactions', transactionRoutes);
-
-
-
-const app = express();
-app.use(express.json());
 
 app.get('/', (req, res) => res.send('API aktif!'));
 
